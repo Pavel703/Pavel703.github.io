@@ -1,4 +1,4 @@
-// slider 
+// slider 1
 const ELEM = document.getElementById('left-cursor');
 const ELEM2 = document.getElementById('right-cursor');
 const SLIDER = document.getElementById('slider');
