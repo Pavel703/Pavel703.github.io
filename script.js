@@ -1,26 +1,26 @@
-// slider 1
-const ELEM = document.getElementById('left-cursor');
-const ELEM2 = document.getElementById('right-cursor');
-const SLIDER = document.getElementById('slider');
+// slider 
+const SLIDER = document.getElementById('left-cursor');
+const SLIDER2 = document.getElementById('right-cursor');
+const SLIDE = document.getElementById('slider');
 
-ELEM.onclick = ELEM2.onclick = function(){
-    SLIDER.classList[1] === 'opacity0' ? SLIDER.classList.remove('opacity0') : SLIDER.classList.add('opacity0');
+SLIDER.onclick = SLIDER.onclick = function(){
+    SLIDE.classList[1] === 'opacity0' ? SLIDE.classList.remove('opacity0') : SLIDE.classList.add('opacity0');
     
 };
 
 
 //change screens 
-const Iclick1 = document.getElementById('black-button');
-const Iclick2 = document.getElementById('black-button-2');
-const Screen1 = document.getElementById('screen-black1');
-const Screen2 = document.getElementById('screen-black2');
+const BLACK_BUTTON1 = document.getElementById('black-button');
+const BLACK_BUTTON2 = document.getElementById('black-button-2');
+const BLACK_SCREEN_1 = document.getElementById('screen-black1');
+const BLACK_SCREEN_2 = document.getElementById('screen-black2');
 
-Iclick1.onclick = function(){
-    Screen1.classList[1] === 'opacity0' ? Screen1.classList.remove('opacity0'): Screen1.classList.add('opacity0');
+BLACK_BUTTON1.onclick = function(){
+    BLACK_SCREEN_1.classList[1] === 'opacity0' ? BLACK_SCREEN_1.classList.remove('opacity0'): BLACK_SCREEN_1.classList.add('opacity0');
 }
 
-Iclick2.onclick = function(){
-    Screen2.classList[1] === 'opacity0' ? Screen2.classList.remove('opacity0'): Screen2.classList.add('opacity0');
+BLACK_BUTTON2.onclick = function(){
+    BLACK_SCREEN_2.classList[1] === 'opacity0' ? BLACK_SCREEN_2.classList.remove('opacity0'): BLACK_SCREEN_2.classList.add('opacity0');
 }
 
 
@@ -119,14 +119,37 @@ function output__message_ok_btn() {
 }
 
 
+// menu -375
+
+const BURGER = document.getElementById('burger');
+const MOBILE_MENU = document.getElementById('burger__menu');
+const MOBILE_LINKS = document.getElementById('burger__nav');
+const LOGO = document.getElementById('logo');
+
+let burger = BURGER.onclick = function(){
+    if(BURGER.classList[1] === 'active-burger'){
+        BURGER.classList.remove('active-burger');
+        MOBILE_MENU.classList.add('active-menu');
+        MOBILE_LINKS.classList.add('burger__slide-active');
+    }else{
+        BURGER.classList.add('active-burger');
+        MOBILE_MENU.classList.remove('active-menu');
+        MOBILE_LINKS.classList.remove('burger__slide-active');
+    }
+}
 
 
-
-
-
-
-
-
-
-
-
+MOBILE_MENU.onclick = function(e){
+    if (event.target.className != 'burger__slide' ) {
+        burger();
+    }else{
+        MOBILE_LINKS.addEventListener('click',(event)=>{
+            if (event.target.classList[0] != "burger__slide"){
+                burger();
+                MOBILE_LINKS.querySelectorAll('.nav-link').forEach(el=>el.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        })
+        
+    };
+};
